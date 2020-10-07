@@ -1,0 +1,15 @@
+https://fr-s-bsg-onc-d.ncifcrf.gov/clinomics/public/getVarAnnotation/22112/NCI0392/NCI0392_N2D_E_HFYTGBGX3/20171101/germline
+Chr	Start	End	Ref	Alt	Avia Tier	Avia High Confidence	Khanlab Tier	Khanlab High Confidence	Gene
+chr13	39435583	39435583	G	A	Tier 4	Y	No tier	Y	'FREM2'
+chr2	27745373	27745373	G	A	Tier 4	Y	No tier	Y	'GCKR'
+
+https://fr-s-bsg-onc-d.ncifcrf.gov/clinomics/public/getVarAnnotation/22112/NCI0392/NCI0392_T2D_E_HFYTGBGX3/20171101/somatic
+Chr	Start	End	Ref	Alt	Avia Tier	Avia High Confidence	Khanlab Tier	Khanlab High Confidence	Gene
+chr15	89876859	89876861	GCC	-	Tier 4	N	Tier 4	Y	'POLG'
+chr8	9584149	9584150	AG	-	Tier 3	Y	Tier 2	Y	'TNKS'
+chr19	57743436	57743436	G	A	Tier 3	Y	Tier 1.2	Y	'AURKC'
+
+https://fr-s-bsg-onc-d.ncifcrf.gov/clinomics/public/getVarAnnotation/22112/NCI0392/NCI0392_T2D_PS_HFYTGBGX3/20171101/somatic
+Chr	Start	End	Ref	Alt	Avia Tier	Avia High Confidence	Khanlab Tier	Khanlab High Confidence	Gene
+chr19	57743436	57743436	G	A	Tier 3	Y	Tier 1.2	Y	'AURKC'
+

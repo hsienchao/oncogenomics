@@ -1,0 +1,49 @@
+<?php
+
+/**
+ *
+ * OR mapping class for table 'access_log'. This table keeps track of the access of genes, patients and projects.
+ *
+ * @copyright 2018 Javed Khan's group
+ * @author Hsien-chao Chou, Scott Goldweber
+ * @package models
+ */
+class AccessLog extends Eloquent {
+	protected $fillable = [];
+	protected $primaryKey = null;
+	protected $table = 'access_log';
+
+	public function saveLog() {
+		DB::table($this->table)->insert(array('target' => $this->target, 'project_id' => $this->project_id, 'type' => $this->type, 'user_id' => $this->user_id, 'created_at' => \Carbon\Carbon::now()));
+	}
+
+	static public function getUserLog($user_id, $type) {
+		$logs = AccessLog::where('user_id', $user_id)->where('type',$type)->orderBy('created_at', 'desc')->get();
+		//$logs = DB::select("select distinct target from access_log where user_id=$user_id and type='$type' order by created_at desc");
+		return $logs;
+	}
+
+	static public function getProjectCount() {
+		$logs = DB::select("select a.project_id, p.name, count(*) as project_count from access_log a, projects p where a.project_id<>'any' and a.project_id=p.id group by a.project_id, p.name order by project_count desc");
+		return $logs;
+	}
+
+	static public function getGeneCount() {
+		$logs = DB::select("select target, count(*) as gene_count from access_log where type = 'gene' group by target order by gene_count desc");
+		return $logs;
+	}
+
+	public function setUpdatedAt($value)
+	{
+		//Do-nothing
+	}
+
+	public function getUpdatedAtColumn()
+	{
+		//Do-nothing
+	}
+
+}
+
+
+

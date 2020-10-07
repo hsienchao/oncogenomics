@@ -1,0 +1,10 @@
+clinomics	helix.nih.gov:/data/khanlab2/ProcessedResults_TGEN/
+processed_DATA	helix.nih.gov:/data/khanlab/projects/processed_DATA/
+cmpc	helix.nih.gov:/data/Clinomics/Analysis/CMPC/
+guha	helix.nih.gov:/data/GuhaData/
+alex	helix.nih.gov:/data/AlexanderP3/Alex/
+collobaration	helix.nih.gov:/data/khanlab2/collobaration_DATA/
+toronto	helix.nih.gov:/data/AlexanderP3/batch_11/
+kuehl	helix.nih.gov:/data/khanlab/projects/Epigenetics_of_Multiple_Myeloma/result/
+Acc_19	helix.nih.gov:/data/Acc_19/processed_DATA/
+wulab	helix.nih.gov:/data/Wulab/processed_DATA/

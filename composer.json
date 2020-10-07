@@ -1,0 +1,50 @@
+{
+	"name": "laravel/laravel",
+	"description": "The Laravel Framework.",
+	"keywords": ["framework", "laravel"],
+	"license": "MIT",
+	"require": {
+		"phpoffice/phpword": "dev-master",
+		"laravel/framework": "4.2.*",
+		"yajra/laravel-oci8": "~2.0",
+                "jacopo/laravel-authentication-acl": "1.2.*",
+                "happydemon/txt": "1.0.1",
+		"yajra/laravel-datatables-oracle": "~3.0"		
+	},
+        "require-dev": {
+                "way/generators": "~2.0",
+		"phpdocumentor/phpdocumentor": "2.*"
+        },
+	"autoload": {
+                "psr-0": {
+                     "Onco": "app/"
+                },
+		"classmap": [
+			"app/commands",
+			"app/controllers",
+			"app/models",
+			"app/database/migrations",
+			"app/database/seeds",
+			"app/tests/TestCase.php"                        
+		]
+	},        
+	"scripts": {
+		"post-install-cmd": [
+			"php artisan clear-compiled",
+			"php artisan optimize"
+		],
+		"post-update-cmd": [
+			"php artisan clear-compiled",
+			"php artisan optimize"
+		],
+		"post-create-project-cmd": [
+			"php artisan key:generate"
+		]
+	},
+	"config": {
+		"preferred-install": "dist",
+		"sort-packages": true,
+        "optimize-autoloader": true
+	},
+	"minimum-stability": "stable"
+}

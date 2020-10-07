@@ -1,0 +1,19 @@
+{
+	"name"       :"happydemon/txt",
+	"type"       :"kohana-module",
+	"description":"A Kohana module that adds extra methods for dealing with text",
+	"keywords"   :["kohana", "text", "kohana module"],
+	"homepage"   :"https://github.com/happyDemon/text",
+	"license"    :"MIT",
+	"authors"    :[
+		{
+			"name"    :"Maxim Kerstens",
+			"email"   :"maxim.kerstens@gmail.com",
+			"role"    :"Developer"
+		}
+	],
+	"require"    :{
+		"php"                   :">=5.3.0",
+		"composer/installers"   : "*"
+	}
+}

@@ -1,0 +1,332 @@
+{
+	"viewProjects":{
+		"type":"View",
+		"URL":"/viewProjects",
+		"call":"GET",
+		"key":"Are you sure you want to delete this project?"
+	},
+	"home":{
+		"type":"View",
+		"URL":"/home",
+		"call":"GET",
+		"key":"Mission of the Oncogenomics Section"
+	},
+		"viewSetting":{
+		"type":"View",
+		"URL":"/viewSetting",
+		"call":"GET",
+		"key":"<a href=\"#\" id=\"btnSave\" class=\"btn btn-success form-control\" >Save to database</a>"
+	},
+	"viewCreateProject":{
+		"type":"View",
+		"URL":"/viewCreateProject",
+		"call":"GET",
+		"key":"<ul id=\"oncotree\"></ul>"
+	},
+	"viewEditProject":{
+		"type":"View",
+		"URL":"/viewEditProject/22112",
+		"call":"GET",
+		"key":"$('#oncotree').tree({data : JSON.parse(json_data), method:'get', cascadeCheck:true, checkbox:true, onCheck: function(node){"
+	},
+	"viewProjectDetails":{
+		"type":"View",
+		"URL":"/viewProjectDetails/22112",
+		"call":"GET",
+		"key":"<table id=\"project_summary\" style=\"width:100%;border:1px\"></table>"			
+	},
+	"viewPatient":{
+		"type":"View",
+		"URL":"/viewPatient/any/NCI0002/20160415",
+		"call":"GET",
+		"key":"<div id=\"patient_details\" style=\"display: none; width: 95%; height: 70%; overflow: auto; background-color=white; padding: 20px\">"
+	},
+	"viewPatients":{
+		"type":"View",
+		"URL":"/viewPatients/22112/any/0/project_details",
+		"call":"GET",
+		"key":"	function updateDetail(patient_id, mode, key, value) {"
+	},
+	"viewCases":{
+		"type":"View",
+		"URL":"/viewCases/22112",
+		"call":"GET",
+		"key":"$('#selProjectList').combobox({"
+	},
+	"viewCase":{
+		"type":"View",
+		"URL":"/viewCase/22602/NCI0002/20160415",
+		"call":"GET",
+		"key":"	function generateList(project, diagnosis, patient) {"
+	},
+	"viewGeneDetail":{
+		"type":"View",
+		"URL":"/viewGeneDetail/ALK",
+		"call":"GET",
+		"key":"<span class=\"tabs-title\">RNAseq</span>"
+	},
+	"viewFusion":{
+		"type":"View",
+		"URL":"/viewFusion/22126/NCI0005/20160415",
+		"call":"GET",
+		"key":"$('#tblFusion tbody').on( 'click', 'tr td.details-control', function () {"
+	},
+	"viewAntigen":{
+		"type":"View",
+		"URL":"/viewAntigen/22114/CL0095/20170522/CL0095_T1D_E",
+		"call":"GET",
+		"key":"Min Corresponding Fold Change: <input id=\"fc_cutoff\" class=\"easyui-numberbox num_filter\" value=\"0\" data-options=\"min:0,max:100000,precision:0\" style=\"width:70px;height:26px\" >
+"
+	},
+	"viewProjectGeneDetail":{
+		"type":"View",
+		"URL":"/viewProjectGeneDetail/22602/ALK/0",
+		"call":"GET",
+		"key":"<div title=\"Gene Annotation\" style=\"height:inherit\">"
+	},
+	"viewExpressionByCase":{
+		"type":"View",
+		"URL":"/viewExpressionByCase/22112/NCI0037/20161018/NCI0037_T_T_HH55JBGXX",
+		"call":"GET",
+		"key":"<label id=\"btnProteinCoding\" class=\"btn btn-default mytooltip\" title=\"Show protein coding genes\">"
+	},
+	"viewExpressionByGene":{
+		"type":"View",
+		"URL":"/viewExpressionByGene/22602/ALK",
+		"call":"GET",
+		"key":"heatmap.drawMeta($('#selSampleMeta').val(), sample_meta[$('#selSampleMeta').val()]);	"
+	},
+	"viewVarAnnotationByGene":{
+		"type":"View",
+		"URL":"/viewVarAnnotationByGene/22602/ALK/germline",
+		"call":"GET",
+		"key":"$(\"div.toolbar\").html('<div><table style=\"font-size:13\"><tr>' + tier_html + '</div><button id=\"popover\" data-toggle=\"popover\" title=\"Select Column\" data-placement=\"bottom\" type=\"button\" class=\"btn btn-default\" >Select Columns</button>&nbsp;Annotation: <span style=\"color:red\">' + annotation.toUpperCase() + '</span>');"
+	},
+	"viewVarAnnotation":{
+		"type":"View",
+		"URL":"/viewVarAnnotation/22602/NCI0002/null/20160415/somatic",
+		"call":"GET",
+		"key":"$(\"div.toolbar\").html('<div><table style=\"font-size:13\"><tr>' + tier_html + '</div><button id=\"popover\" data-toggle=\"popover\" title=\"Select Column\" data-placement=\"bottom\" type=\"button\" class=\"btn btn-default\" >Select Columns</button>&nbsp;Annotation: <span style=\"color:red\">' + annotation.toUpperCase() + '</span>');"
+	},
+	"viewFusionGenes":{
+		"type":"View",
+		"URL":"/viewFusionGenes/22602/ALK",
+		"call":"GET",
+		"key":"$('#tblFusion tbody').on( 'click', 'tr td.details-control', function () {"
+	},
+	"viewVarProjectDetail":{
+		"type":"View",
+		"URL":"/viewVarProjectDetail/22112/germline",
+		"call":"GET",
+		"key":"	<div id=\"var_layout\" class=\"easyui-layout\" data-options=\"fit:true,border:false\" style=\"display:none;\">"
+	},
+	"viewFusionProjectDetail":{
+		"type":"View",
+		"URL":"/viewFusionProjectDetail/22112/",
+		"call":"GET",
+		"key":"Fusion:&nbsp;<span id=\"lblCountDisplay\" style=\"text-align:left;color:red;\" text=\"\"></span>/<span id=\"lblCountTotal\" style=\"text-align:left;\" text=\"\"></span>"
+	},
+	"viewFusionProjectDetail":{
+		"type":"View",
+		"URL":"/viewExpression/22112/null/null/all/null",
+		"call":"GET",
+		"key":"<textarea class=\"form-control\" rows=\"6\" id=\"txtGeneList\">ALK MYCN FTP53 MDM2 MDM4 CDKN2A CDKN2B TP53BP1 EGFR ERBB2 PDGFRA MET KRAS NRAS HRAS NF1 SPRY2 FOXO1 FOXO3</textarea>"
+	},
+	"viewProjectQC":{
+		"type":"View",
+		"URL":"/viewProjectQC/22112/",
+		"call":"GET",
+		"key":"var tbl = $('#tblDNAQCCutoff').DataTable( {\"data\": data.qc_cutoff.data,\"columns\": data.qc_cutoff.cols});"
+
+	},
+	"viewVarQC":{
+		"type":"View",
+		"URL":"/viewVarQC/CL0095/20170522/",
+		"call":"GET",
+		"key":"qc_cutoff_state = switch_details(qc_cutoff_state, 'qc_cutoff', 'imgQCCutoff');"
+
+	},
+	"viewGSEA":{
+		"type":"View",
+		"URL":"/viewGSEA/22112/any/any/2128584966",
+		"call":"GET",
+		"key":"Gene Set Enrichment Analysis (GSEA) is a computational method that determines whether an a priori defined set of genes shows statistically significant, concordant differences between two biological states (e.g. phenotypes)."
+	},
+	"viewCircos":{
+		"type":"View",
+		"URL":"/viewCircos/NCI0002/20160415",
+		"call":"GET",
+		"key":"<div id=\"biocircos\" style=\"background-color:#FFFFFF\"></div>"
+	},
+	"viewPatientTree":{
+		"type":"View",
+		"URL":"/viewPatientTree/CL0095",
+		"call":"GET",
+		"key":"	tree_width = $('#panelTree').width() - 30;"
+	},
+	"viewGenotyping":{
+		"type":"View",
+		"URL":"/viewGenotyping/22112/self/project/0",
+		"call":"GET",
+		"key":"$('.DTFC_LeftBodyLiner').css('overflow-y', 'hidden');"
+	},
+	"viewCNV":{
+		"type":"View",
+		"URL":"/viewCNV/22143/CL0036/20160415/CL0036_T1D_E/cnvkit",
+		"call":"GET",
+		"key":"showTable(data, 'tblCNV');"
+	},
+	"viewCNVByGene":{
+		"type":"View",
+		"URL":"/viewCNVByGene/22112/ALK",
+		"call":"GET",
+		"key":"hide_cols.tblCNV = [];"
+	},
+	"getVarAnnotation_AVIA_germline":{
+		"type":"Json",
+		"URL":"/getVarAnnotation/22143/CL0036/null/20160415/germline",
+		"call":"GET",
+		"key":"./tests/getVarDetailTest_Avia_germline.json",
+		"tier":52,
+		"annotation":"avia"
+	},
+	"getVarAnnotation_KhanLab_germline":{
+		"type":"Json",
+		"URL":"/getVarAnnotation/22143/CL0036/null/20160415/germline",
+		"call":"GET",
+		"key":"./tests/getVarDetailTest_KhanLab_germline.json",
+		"tier":51,
+		"annotation":"khanlab"
+	},
+	"getVarAnnotation_AVIA_somatic":{
+		"type":"Json",
+		"URL":"/getVarAnnotation/22143/CL0036/null/20160415/somatic",
+		"call":"GET",
+		"key":"./tests/getVarDetailTest_Avia_somatic.json",
+		"tier":51,
+		"annotation":"avia"
+	},
+	"getVarAnnotation_KhanLab_somatic":{
+		"type":"Json",
+		"URL":"/getVarAnnotation/22143/CL0036/null/20160415/somatic",
+		"call":"GET",
+		"key":"./tests/getVarDetailTest_KhanLab_somatic.json",
+		"tier":50,
+		"annotation":"khanlab"
+	},
+	"getVarAnnotation_AVIA_rnaseq":{
+		"type":"Json",
+		"URL":"/getVarAnnotation/22143/CL0036/null/20160415/rnaseq",
+		"call":"GET",
+		"key":"./tests/getVarDetailTest_Avia_rnaseq.json",
+		"tier":51,
+		"annotation":"avia"
+	},
+	"getVarAnnotation_KhanLab_rnaseq":{
+		"type":"Json",
+		"URL":"/getVarAnnotation/22143/CL0036/null/20160415/rnaseq",
+		"call":"GET",
+		"key":"./tests/getVarDetailTest_KhanLab_rnaseq.json",
+		"tier":50,
+		"annotation":"khanlab"
+	},
+	"getFusion":{
+		"type":"Json",
+		"URL":"/getFusion/any/CL0036/20160415",
+		"call":"GET",
+		"key":"./tests/getFusion_Test.json",
+		"tier":13,
+		"annotation":"NA"
+	},
+	"getExpressionByCase":{
+		"type":"Json",
+		"URL":"/getExpressionByCase/CL0036/20160415/Cl0036_T1R_T_HKM2FBGXX",
+		"call":"GET",
+		"key":"./tests/getExpressionByCase_Test.json",
+		"tier":"NA",
+		"annotation":"NA"
+	},
+	"getCNV_kit":{
+		"type":"Json",
+		"URL":"/getCNV/CL0036/20160415/CL0036_T1D_E_HWMTYBGXX/cnvkit",
+		"call":"GET",
+		"key":"./tests/getCNVkit_Test.json",
+		"tier":"NA",
+		"annotation":"NA"
+	},
+	"getCNV_sequenza":{
+		"type":"Json",
+		"URL":"/getCNV/CL0036/20160415/CL0036_T1D_E_HWMTYBGXX/sequenza",
+		"call":"GET",
+		"key":"./tests/getCNVsequenza_Test.json",
+		"tier":"NA",
+		"annotation":"NA"
+	},
+	"getAntigen":{
+		"type":"Json",
+		"URL":"/getAntigenData/22143/CL0036/20160415/CL0036_T1D_E_HWMTYBGXX",
+		"call":"GET",
+		"key":"./tests/getAntigen_Test.json",
+		"tier":"NA",
+		"annotation":"NA"
+	},
+		"getQC_rna":{
+		"type":"Json",
+		"URL":"/getQC/CL0036/20160415/rna",
+		"call":"GET",
+		"key":"./tests/getQC_rna_Test.json",
+		"tier":"NA",
+		"annotation":"NA"
+	},
+		"getQC_dna":{
+		"type":"Json",
+		"URL":"/getQC/CL0036/20160415/dna",
+		"call":"GET",
+		"key":"./tests/getQC_dna_Test.json",
+		"tier":"NA",
+		"annotation":"NA"
+	},
+	"getQC_genotyping":{
+		"type":"Json",
+		"URL":"/getPatientGenotyping/CL0036/20160415",
+		"call":"GET",
+		"key":"./tests/getqc_PatientGenotyping_Test.json",
+		"tier":"NA",
+		"annotation":"NA"
+	},
+	"getHLAData":{
+		"type":"Json",
+		"URL":"/getHLAData/CL0036/20160415/Cl0036_T1R_T",
+		"call":"GET",
+		"key":"./tests/getHLAData_Test.json",
+		"tier":"NA",
+		"annotation":"NA"
+	},
+	"getCircosData":{
+		"type":"Json",
+		"URL":"/getCircosData/CL0036/20160415",
+		"call":"GET",
+		"key":"./tests/getCircosData_Test.json",
+		"tier":"NA",
+		"annotation":"NA"
+	},
+	"getVarAnnotation_AVIA_hotspot":{
+		"type":"Json",
+		"URL":"/getVarAnnotation/22143/CL0036/CL0036_T1D_E_HWMTYBGXX/20160415/hotspot",
+		"call":"GET",
+		"key":"./tests/getVarDetailTest_Avia_hotspot.json",
+		"tier":53,
+		"annotation":"avia"
+	},
+	"getVarAnnotation_KhanLab_hotspot":{
+		"type":"Json",
+		"URL":"/getVarAnnotation/22143/CL0036/CL0036_T1D_E_HWMTYBGXX/20160415/hotspot",
+		"call":"GET",
+		"key":"./tests/getVarDetailTest_KhanLab_hotspot.json",
+		"tier":52,
+		"annotation":"khanlab"
+	}
+
+	
+}
+

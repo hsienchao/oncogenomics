@@ -1,0 +1,5 @@
+https://fr-s-bsg-onc-d.ncifcrf.gov/clinomics/public/getVarAnnotation/22112/NCI0408/NCI0408_N2D_E_H3TGCBGX3/20170921/germline
+Chr	Start	End	Ref	Alt	Avia Tier	Avia High Confidence	Khanlab Tier	Khanlab High Confidence	Gene
+chr13	21729952	21729952	-	AA	No tier	N	No tier	Y	'SKA3'
+chr13	100622668	100622676	GGCGGCGGC	-	No tier	N	No tier	Y	'ZIC5'
+

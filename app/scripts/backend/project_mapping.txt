@@ -1,0 +1,2 @@
+clinomics	10.133.130.41:/projects/Clinomics/ProcessedResults/
+cmpc	helix.nih.gov:/data/Clinomics/Analysis/CMPC/

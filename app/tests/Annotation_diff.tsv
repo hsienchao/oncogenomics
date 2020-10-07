@@ -1,0 +1,9 @@
+/getVarAnnotation/22112/CL0039/null/20170615/germline
+Chr	Start	End	Ref	Alt	Gene	Avia	Khanlab
+chr1	144854597	144854598	TC	CT	'PDE4DIP'	No tier	Tier 3
+chr8	17796382	17796383	AC	GT	'PCM1'	No tier	Tier 3
+chr10	17127755	17127755	G	C	'CUBN'	Tier 4	Tier 3
+chr16	29824814	29824814	G	C	'PRRT2'	No tier	Tier 4
+chr19	15376332	15376332	C	T	'BRD4'	No tier	Tier 3
+chr22	18905934	18905934	A	G	'PRODH'	No tier	Tier 3
+

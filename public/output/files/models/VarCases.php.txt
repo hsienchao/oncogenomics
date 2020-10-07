@@ -1,0 +1,96 @@
+<?php
+
+class VarCases extends Eloquent {
+	protected $fillable = [];
+    protected $table = 'cases';
+    protected $primaryKey = null;
+    public $incrementing = false;
+	
+    static public function getCases($project_id)
+    {
+        $condition = "";
+        if ($project_id != "any")
+            $condition = "and exists(select * from project_patients p2 where p.patient_id=p2.patient_id and p2.project_id=$project_id)";
+        $rows = DB::select("select p.patient_id, p.diagnosis, c.case_id, c.case_name, c.finished_at as pipeline_finish_time, c.updated_at as upload_time, status from cases c, patients p where c.patient_id=p.patient_id $condition");
+        return $rows;
+    }
+
+	static public function getCasesByPatientID($patient_id, $case_id="any")
+    {
+        //$rows = VarCases::where('patient_id', '=', $patient_id)->get();
+        $condition = "";
+        if ($case_id != "any")
+            $condition = " and case_id = '$case_id'";
+        $rows = DB::select("select distinct patient_id, case_id, case_name, path from cases where patient_id = '$patient_id' $condition");
+		return $rows;
+    }
+
+    static public function getCase($patient_id, $case_id)
+    {
+        if ($case_id == "any")
+            $rows = VarCases::where('patient_id', '=', $patient_id)->get();
+        else
+            $rows = VarCases::where('patient_id', '=', $patient_id)->where('case_id', '=', $case_id)->get();
+        if (count($rows) == 0)
+            return null;
+        return $rows[0];
+    }
+
+    static public function getCount() {
+        return DB::select('select count(*) as cnt from cases')[0]->cnt;
+    }
+
+    static public function getPatientCount() {
+        return DB::select('select count(distinct patient_id) as cnt from cases')[0]->cnt;
+    }
+
+    static public function getCaseNames()
+    {
+        $rows = DB::select("select distinct patient_id, case_name from cases");
+        $cases = array();
+        foreach ($rows as $row) {
+            $cases[$row->patient_id][] = $row->case_name;
+        }
+        return $cases;
+    }
+
+    static public function getSamples($patient_id, $case_id = "any")
+    {
+        if ($case_id == "any")
+            return DB::select("select distinct s1.*,s2.sample_name, s2.exp_type path from processed_sample_cases s1, samples s2, cases c where s1.patient_id=c.patient_id and s1.case_id=c.case_id and s1.patient_id=c.patient_id and s1.sample_id=s2.sample_id and s1.patient_id='$patient_id'");
+        $sql = "select distinct s1.*,s2.sample_name, s2.exp_type, path from processed_sample_cases s1, samples s2, cases c where s1.patient_id=c.patient_id and s1.case_id=c.case_id and s1.patient_id = c.patient_id and s1.sample_id=s2.sample_id and s1.patient_id='$patient_id' and s1.case_id='$case_id'";
+        Log::info($sql);
+        return DB::select($sql);
+    }    
+
+    static public function publish($patient_id, $case_id){
+        return VarCases::where('patient_id', '=', $patient_id)->where('case_id', '=', $case_id)->update(array('status' => "passed"));
+    }
+
+    static public function getPath($patient_id, $case_id)
+    {
+        if ($case_id == "any")
+            $rows = VarCases::where('patient_id', '=', $patient_id)->get();
+        else
+            $rows = VarCases::where('patient_id', '=', $patient_id)->where('case_id', '=', $case_id)->get();
+        if (count($rows) == 0)
+            return null;
+        return $rows[0]->path;
+    }
+
+    static public function getExpressionSamples($patient_id, $case_id) {
+        $rows = DB::select("select distinct s.sample_id, s.sample_name, c.path from cases c, samples s where s.patient_id=c.patient_id and c.patient_id='$patient_id' and c.case_id='$case_id' and s.exp_type='RNAseq'");
+        $root = storage_path()."/ProcessedResults/";
+        $exp_samples = array();
+        foreach ($rows as $row) {
+            $exp_file = Sample::getExpressionFile($root.$row->path."/$patient_id/$case_id", $row->sample_id, $row->sample_name, 'refseq', 'gene');
+            if ($exp_file == "")
+                $exp_file = Sample::getExpressionFile($root.$row->path."/$patient_id/$case_id", $row->sample_id, $row->sample_name, 'ensembl', 'gene');
+            if ($exp_file != "")
+                $exp_samples[$row->sample_name] = $row->sample_id;
+        }
+        return $exp_samples;
+    }
+
+}
+

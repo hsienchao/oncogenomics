@@ -1,0 +1,11 @@
+{
+	"getVarAnnotation_AVIA_germline":{
+		"type":"Json",
+		"URL":"/getVarAnnotation/22112/CL0039/null/20170615/germline",
+		"call":"GET",
+		"key":"./tests/tiers/CL0039_getVarDetailTest_Avia_germline.json",
+		"tier":52,
+		"annotation":"avia"
+	}
+	
+}

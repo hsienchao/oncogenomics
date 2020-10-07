@@ -1,0 +1,10 @@
+<?php
+
+class VarFusion extends Eloquent {
+	protected $fillable = [];
+        protected $table = 'var_fusion';
+
+}
+
+
+

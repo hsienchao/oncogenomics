@@ -1,0 +1,4 @@
+processed_DATA	helix.nih.gov:/data/khanlab/projects/updatedSync/update_list2/new_list_processed_DATA.txt	helix.nih.gov:/data/khanlab/projects/processed_DATA/
+clinomics	helix.nih.gov:/data/khanlab/projects/updatedSync/update_list2/new_list_clinomics.txt	helix.nih.gov:/data/khanlab2/ProcessedResults_TGEN/
+Acc_19	helix.nih.gov:/data/khanlab/projects/updatedSync/update_list2/new_list_Acc_19.txt	helix.nih.gov:/data/Acc_19/processed_DATA/
+wulab	helix.nih.gov:/data/khanlab/projects/updatedSync/update_list2/new_list_wulab.txt	helix.nih.gov:/data/Wulab/processed_DATA/

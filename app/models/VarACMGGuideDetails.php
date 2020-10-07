@@ -1,0 +1,8 @@
+<?php
+
+class VarACMGGuideDetails extends Eloquent {
+	protected $fillable = [];
+    protected $table = 'var_acmg_guide_details';
+    protected $primaryKey = null;
+    public $incrementing = false;    
+}

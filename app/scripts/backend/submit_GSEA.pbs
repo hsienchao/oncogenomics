@@ -1,0 +1,29 @@
+#!/bin/bash
+#PBS -l nodes=2:ppn=2
+#PBS -l walltime=00:15:00
+#PBS -e /mnt/webrepo/fr-s-bsg-onc-d/htdocs/clinomics_dev2/app/storage/logs/error.txt
+#PBS -o /mnt/webrepo/fr-s-bsg-onc-d/htdocs/clinomics_dev2/app/storage/logs/output.txt
+cd $directory
+pwd
+eval $command
+echo $sample_id
+echo $input_file
+echo $token_id
+echo $case_id
+echo $out_name
+echo $gset
+echo $user_id
+echo $sample_name
+echo $url
+echo $out_path
+echo $email
+echo $patient_id
+echo $rank_by
+echo $ispublic
+echo $normal_project_name
+echo $project_id
+module load oracle
+python ../app/scripts/send_zip.py -s $sample_id -i $input_file -t $token_id -c $case_id -o $out_name -g $gset -u $user_id -n $sample_name -l $url -p $out_path -e $email -a $patient_id -r $rank_by -b $ispublic -m $normal_project_name -z $project_id
+#cd /home/ncif-www-onc-svc/
+#mkdir /home/ncif-www-onc-svc/fr_s_bsg_onc_d/htdocs/clinomics_dev2/app/bin/test
+

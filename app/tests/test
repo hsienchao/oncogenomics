@@ -1,0 +1,24 @@
+{
+    "event": "suiteStart",
+    "suite": "Application Test Suite",
+    "tests": 1
+}{
+    "event": "suiteStart",
+    "suite": "Create_keysTest",
+    "tests": 1
+}{
+    "event": "testStart",
+    "suite": "Create_keysTest",
+    "test": "Create_keysTest::test"
+}{
+    "event": "test",
+    "suite": "Create_keysTest",
+    "test": "Create_keysTest::test",
+    "status": "pass",
+    "time": 97.619947910309,
+    "trace": [
+
+    ],
+    "message": "",
+    "output": "avia\n\/getVarAnnotation\/22143\/CL0036\/null\/20160415\/germline\nkhanlab\n\/getVarAnnotation\/22143\/CL0036\/null\/20160415\/germline\navia\n\/getVarAnnotation\/22143\/CL0036\/null\/20160415\/somatic\nkhanlab\n\/getVarAnnotation\/22143\/CL0036\/null\/20160415\/somatic\navia\n\/getVarAnnotation\/22143\/CL0036\/null\/20160415\/rnaseq\nkhanlab\n\/getVarAnnotation\/22143\/CL0036\/null\/20160415\/rnaseq\nNA\n\/getFusion\/any\/CL0036\/20160415\nNA\n\/getExpressionByCase\/CL0036\/20160415\/Cl0036_T1R_T_HKM2FBGXX\nNA\n\/getCNV\/CL0036\/20160415\/CL0036_T1D_E_HWMTYBGXX\/cnvkit\nNA\n\/getCNV\/CL0036\/20160415\/CL0036_T1D_E_HWMTYBGXX\/sequenza\nNA\n\/getAntigenData\/22143\/CL0036\/20160415\/CL0036_T1D_E_HWMTYBGXX\nNA\n\/getQC\/CL0036\/20160415\/rna\nNA\n\/getQC\/CL0036\/20160415\/dna\nNA\n\/getPatientGenotyping\/CL0036\/20160415\nNA\n\/getHLAData\/CL0036\/20160415\/Cl0036_T1R_T\nNA\n\/getCircosData\/CL0036\/20160415\navia\n\/getVarAnnotation\/22143\/CL0036\/CL0036_T1D_E_HWMTYBGXX\/20160415\/hotspot\nkhanlab\n\/getVarAnnotation\/22143\/CL0036\/CL0036_T1D_E_HWMTYBGXX\/20160415\/hotspot\n"
+}

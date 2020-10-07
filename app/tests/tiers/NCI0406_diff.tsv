@@ -1,0 +1,6 @@
+https://fr-s-bsg-onc-d.ncifcrf.gov/clinomics/public/getVarAnnotation/22112/NCI0406/NCI0406_N1D_E2_HNWVVBGX2/20170603/germline
+Chr	Start	End	Ref	Alt	Avia Tier	Avia High Confidence	Khanlab Tier	Khanlab High Confidence	Gene
+chr1	6007259	6007259	G	A	No tier	Y	Tier 4	Y	'NPHP4'
+chr1	209791341	209791341	G	A	Tier 1.3	Y	Tier 3	Y	'LAMB3'
+chr14	24724656	24724656	T	C	No tier	Y	Tier 4	Y	'TGM1'
+

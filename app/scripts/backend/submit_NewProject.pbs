@@ -1,0 +1,14 @@
+#!/bin/bash
+#PBS -l nodes=1:ppn=2
+#PBS -l walltime=01:00:00
+
+#PBS -e /mnt/webrepo/fr-s-bsg-onc-d/htdocs/clinomics_dev/app/storage/logs/error_project.txt
+#PBS -o /mnt/webrepo/fr-s-bsg-onc-d/htdocs/clinomics_dev/app/storage/logs/output_project.txt
+echo $email
+echo $project_id
+
+module load oracle
+/mnt/webrepo/fr-s-bsg-onc-d/htdocs/clinomics_dev/app/scripts/preprocessProjectMaster.pl -p $project_id -e $email 
+
+echo "Done"
+

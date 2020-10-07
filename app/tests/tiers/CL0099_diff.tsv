@@ -1,0 +1,5 @@
+https://fr-s-bsg-onc-d.ncifcrf.gov/clinomics/public/getVarAnnotation/22112/CL0099/CL0099_N1D_E_H5C35BGX3/20170718/germline
+Chr	Start	End	Ref	Alt	Avia Tier	Avia High Confidence	Khanlab Tier	Khanlab High Confidence	Gene
+chr16	88800060	88800060	C	T	Tier 4	Y	Tier 3	Y	'PIEZO1'
+chr13	21729952	21729952	-	AA	No tier	N	No tier	Y	'SKA3'
+

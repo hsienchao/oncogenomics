@@ -1,0 +1,161 @@
+<?php
+
+
+class VarQCController extends BaseController {
+
+	public function viewProjectQC($project_id) {
+		if (!User::hasProject($project_id))
+			return View::make('pages/error_no_header', ['message' => 'Access denied or session timed out!']);
+		$cases = Project::getCases($project_id);
+		$plot_types = array('circos', 'coveragePlot', 'transcriptCoverage', 'hotspot');
+		//$plot_types = array();
+		$genotyping_url = url("/viewGenotyping/$project_id/self/project/0");
+		return View::make('pages/viewProjectQC', ['project_id' => $project_id, 'cases' => $cases, 'plot_types' => $plot_types, 'genotyping_url' => $genotyping_url]);
+	}
+
+	public function viewVarQC($patient_id, $case_id) {
+		if (!User::hasPatient($patient_id)) {
+			return View::make('pages/error_no_header', ['message' => 'Access denied or session timed out!']);
+		}
+		$patients = Patient::where('patient_id', '=', $patient_id)->get();
+		$patient = null;
+		if (count($patients) > 0)
+			$patient = $patients[0];
+		$cases = VarCases::getCasesByPatientID($patient_id, $case_id);
+		$case = null;
+		if (count($cases) > 0)
+			$case = $cases[0];
+		if ($case == null || $patient == null){
+			return View::make('pages/error_no_header', ['message' => 'Patient or case not found']);
+		}
+		$path = $case->path;
+		Log::info("Path: $path");
+		$sample_types = $patient->getVarSamples($case_id);
+		$cnv_samples = array();
+		$conpair_samples = array();
+		$fastqc_samples = array();
+
+		foreach (glob(storage_path()."/ProcessedResults/$path/$patient_id/$case_id/*/qc/fastqc/*fastqc.html") as $fastqc_file) {
+			$file_path = str_replace(storage_path()."/ProcessedResults/$path/$patient_id/$case_id/", "", $fastqc_file);			
+			preg_match('/\/qc\/fastqc\/(.*)_fastqc.html/', $file_path, $matches);
+			if (count($matches) > 1) {
+				$file_path = str_replace("/", "@", $file_path);
+				$fastqc_samples[$matches[1]] = $file_path;
+			}
+		}
+		ksort($fastqc_samples);
+		//Log::info(json_encode($fastqc_samples));
+		foreach($sample_types as $type => $samples) {
+			foreach ($samples as $sample) {
+				Log::info("Sample name: $sample->sample_name");			
+				if ($sample->tissue_cat == 'tumor' && $sample->exp_type != 'RNAseq') {
+					list($file, $sample_folder) = Sample::getFilePath(storage_path()."/ProcessedResults/$path/$patient_id/$sample->case_id", $sample->sample_id, $sample->sample_name, "sequenza", "_CP_contours.pdf");
+					if ($file != "")
+						$cnv_samples[$sample_folder] = $sample->case_id;
+					list($conta_file, $sample_folder) = Sample::getFilePath(storage_path()."/ProcessedResults/$path/$patient_id/$sample->case_id", $sample->sample_id, $sample->sample_name, "qc", ".conta.txt");
+					$conpair_content = "";
+					if ($conta_file != "")
+						$conpair_content = file_get_contents($conta_file);
+					list($concod_file, $sample_folder) = Sample::getFilePath(storage_path()."/ProcessedResults/$path/$patient_id/$sample->case_id", $sample->sample_id, $sample->sample_name, "qc", ".concod.txt");
+					if ($concod_file != "")
+						$conpair_content = $conpair_content."\n".file_get_contents($concod_file);
+					if ($conpair_content != "")
+						$conpair_samples[$sample->sample_name] = $conpair_content;
+
+
+					/*
+					$file = storage_path()."/ProcessedResults/".$path."/$patient_id/$sample->case_id/$sample->sample_name/sequenza/$sample->sample_name/$sample->sample_name"."_CP_contours.pdf";
+					if (!file_exists($file)) {
+						$file = storage_path()."/ProcessedResults/".$path."/$patient_id/$sample->case_id/$sample->sample_id/sequenza/$sample->sample_id/$sample->sample_id"."_CP_contours.pdf";
+						if (!file_exists($file)) {
+							$file = storage_path()."/ProcessedResults/".$path."/$patient_id/$sample->case_id/Sample_$sample->sample_id/sequenza/Sample_$sample->sample_id/Sample_$sample->sample_id"."_CP_contours.pdf";
+							if (!file_exists($file))
+								continue;
+							else
+								$cnv_samples["Sample_".$sample->sample_id] = $sample->case_id;
+						}
+						else
+							$cnv_samples[$sample->sample_id] = $sample->case_id;
+					} else
+						$cnv_samples[$sample->sample_name] = $sample->case_id;
+					*/
+				}
+
+			}
+		}
+		ksort($cnv_samples);
+		Log::info('samples:'.json_encode($cnv_samples));
+		$qc_cnt = $patient->getQCCount($case_id);
+		return View::make('pages/viewVarQC', ['qc_cnt' => $qc_cnt, 'patient_id' => $patient_id, 'case_id' => $case_id, 'cnv_samples' => $cnv_samples, 'conpair_samples' => $conpair_samples, 'fastqc_samples' => $fastqc_samples]);
+	}
+
+	public function viewFASTQC($patient_id, $case_id, $fastqc_path) {
+		if (!User::hasPatient($patient_id)) {
+			return View::make('pages/error', ['message' => 'Access denied!']);
+		}
+		$path = VarCases::getPath($patient_id, $case_id);
+		$filename = storage_path()."/ProcessedResults/$path/$patient_id/$case_id/".str_replace("@","/", $fastqc_path);
+		$content = file_get_contents($filename);
+		$headers = array('Content-Type' => 'text/html');
+		return Response::make($content, 200, $headers);
+	}
+
+	public function saveQCLog() {		
+		try {
+			$user_id = Sentry::getUser()->id;
+		} catch (Exception $e) {
+			return "NoUserID";
+		}
+		$data = Input::all();	
+		try {
+			$qclog = new QCLog;	
+			$qclog->patient_id = $data["patient_id"];
+			$qclog->log_type = $data["log_type"];			
+			$qclog->log_decision = $data["log_decision"];
+			$qclog->log_comment = $data["log_comment"];
+			$qclog->user_id = $user_id;
+			$qclog->save();
+			return "Success";
+		} catch (\Exception $e) { 
+			return $e->getMessage();			
+		}	
+
+	}
+
+	public function getQCLogs($patient_id, $case_id, $log_type) {
+		$logs = QCLog::getLogByPatientAndType($patient_id, $case_id, $log_type);
+		return json_encode($this->getDataTableJson($logs));
+	}
+
+	public function getQC($patient_id, $case_id, $type) {
+		return json_encode(VarQC::getQCByPatientID($patient_id, $case_id, $type));
+	}
+
+	public function getQCPlot($patient_id, $case_id, $type) {
+		if (!User::hasPatient($patient_id)) {
+			return View::make('pages/error', ['message' => 'Access denied!']);
+		}
+		$path = VarCases::getPath($patient_id, $case_id);
+		if ($path == null) {
+			return View::make('pages/error', ['message' => 'No case found!']);
+		}
+		$pathToFile = storage_path()."/ProcessedResults/".$path."/$patient_id/$case_id/qc/$patient_id.$type.png";
+
+		//$headers = array('Content-Type: application/pdf');
+
+		return Response::download($pathToFile);
+
+	}
+
+	public function getProjectHotspotCoverage($project_id) {
+		$samples = Project::getSampleCases($project_id);
+		return VarQC::getHotspotCoverage($samples);
+	}
+
+	public function getHotspotCoverage($patient_id, $case_id) {
+		$samples = VarCases::getSamples($patient_id, $case_id);
+		Log::info(json_encode($samples));
+		return VarQC::getHotspotCoverage($samples);
+	}
+}
+
